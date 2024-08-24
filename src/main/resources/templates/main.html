@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+<body>
+<header>
+    <nav class="nav-bar">
+        <ul>
+            <li><a th:href="@{/main}">메인</a></li>
+            <li><a th:href="@{/companyIntro}">회사소개</a></li>
+            <li><a th:href="@{/rental}">임대상품</a></li>
+            <li><a th:href="@{/quoteRequest}">견적문의</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1>Welcome to the Main Page</h1>
+</body>
+</html>
