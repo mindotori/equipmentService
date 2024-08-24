@@ -3,10 +3,39 @@
 <head>
     <title>Main Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <!-- 카카오 지도 API 불러오기 -->
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
+    <style>
+        #map {
+            width: 100%;  /* 지도의 너비 */
+            height: 400px;  /* 지도의 높이 */
+        }
+    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 
+<!-- 지도를 표시할 영역 -->
+<div id="map"></div>
+
+<script>
+    // 카카오 지도 API가 로드된 후에 이 코드를 실행합니다
+    document.addEventListener("DOMContentLoaded", function() {
+        // 지도를 표시할 div와 지도 옵션을 설정합니다
+        var mapContainer = document.getElementById('map'),
+            mapOption = {
+                center: new kakao.maps.LatLng(37.5882, 126.7207), // 사업장 중심
+                level: 3 // 지도의 확대 레벨
+            };
+
+        // 지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 지도 이동 및 확대/축소 기능을 비활성화하여 고정합니다
+        map.setDraggable(false); // 지도 이동 불가
+        map.setZoomable(false); // 지도 확대/축소 불가
+    });
+</script>
 
 </body>
 </html>

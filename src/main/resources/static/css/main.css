@@ -80,3 +80,62 @@ footer {
 .footer-nav ul li a:hover {
     text-decoration: underline;
 }
+
+/* 갤러리 */
+.gallery-container {
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.gallery-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item-info {
+    padding: 15px;
+}
+
+.gallery-item-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.gallery-item-info p {
+    margin: 10px 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+}
