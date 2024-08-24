@@ -1,7 +1,8 @@
-/* 네비게이션 스타일 */
+/* 헤더 */
 .nav-bar {
     background-color: #f8f9fa;
     padding: 10px 0;
+    transition: background-color 0.5s; /* 배경색에만 전환 효과 적용 */
 }
 
 .nav-bar ul {
@@ -22,11 +23,60 @@
     display: block;
     padding: 10px 0;
     text-decoration: none;
-    color: #333;
+    color: #000;
     font-weight: bold;
+    transition: background-color 0.5s, color 0.5s; /* 배경색과 글자색에 전환 효과 적용 */
 }
 
 .nav-bar ul li a:hover {
     background-color: #007BFF;
     color: #fff;
+}
+
+/* 전체 페이지를 flexbox로 설정 */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 콘텐츠가 페이지의 나머지 부분을 차지하도록 설정 */
+.content {
+    flex: 1;
+}
+
+/* 푸터 */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 푸터 내비게이션 스타일 */
+.footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-nav ul li {
+    margin: 5px 0;
+}
+
+.footer-nav ul li a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.footer-nav ul li a:hover {
+    text-decoration: underline;
 }
