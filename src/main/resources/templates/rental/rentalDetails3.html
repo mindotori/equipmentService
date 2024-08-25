@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main Page</title>
+    <title>Product Details</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+<section class="contact-info">
+    <h2>Contact</h2>
+    <p>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
+    <p>Call: 010-4604-8127</p>
+    <p>Mail: <a href="mailto:micael1103@daum.net">micael1103@daum.net</a></p>
+</section>
+<div class="page-container">
+    <main class="main-content">
+        <div class="product-details-container">
+            <div class="product-image">
+                <img src="/images/big.png" alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Laval-2000</h1>
+                <div class="product-specs">
+                    <ul>
+                        <li>
+                            <h3>장비 기능</h3>
+                            <p>*냉장: -2 ~ +10</p>
+                            <p>*냉동: -20 ~ 18</p>
+                        </li>
+                        <li>
+                            <h3>장비 브랜드</h3>
+                            <p>arnee</p>
+                        </li>
+                        <li>
+                            <h3>장비 규격</h3>
+                            <p>1970 * 1000 * 900 (230KG/EA)</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
+    </main>
+
+    <!-- 목록 섹션 -->
+    <section class="product-list-section">
+        <h2>Other Products</h2>
+        <div class="gallery-container">
+            <div class="gallery">
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails1}" class="gallery-item-link">
+                        <img src="/images/small.png" alt="Product 1">
+                        <div class="gallery-item-info">
+                            <h2>Laval-1000</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails2}" class="gallery-item-link">
+                        <img src="/images/mid.png" alt="Product 2">
+                        <div class="gallery-item-info">
+                            <h2>Laval-1370</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails3}" class="gallery-item-link">
+                        <img src="/images/big.png" alt="Product 3">
+                        <div class="gallery-item-info">
+                            <h2>Laval-2000</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>
