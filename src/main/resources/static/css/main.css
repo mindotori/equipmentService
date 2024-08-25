@@ -5,6 +5,12 @@
     padding: 0;
 }
 
+/* 메인 지도 */
+#map {
+    width: 100%;
+    height: 400px;
+}
+
 /* 헤더 */
 .nav-bar {
     background-color: #f8f9fa;
@@ -57,7 +63,82 @@ body {
     flex: 1;
 }
 
-/* 임대상품 섹션 스타일 */
+/* ---------------메인 슬라이더---------------------- */
+/* 슬라이더 스타일 */
+.slider-section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    height: 600px; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
+}
+
+.slider {
+    display: flex;
+    position: relative;
+    width: 300%;
+    height: 100%; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
+}
+
+.slide {
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    height: 100%; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /* 이미지가 슬라이더 높이에 맞게 조정되도록 합니다 */
+    object-fit: cover; /* 이미지가 잘리지 않도록 조정 */
+    vertical-align: middle;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* 네비게이션 버튼 */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* 메인 - 임대상품 섹션 스타일 */
 .rental-section {
     padding: 40px 0;
     background-color: #f4f4f4;
@@ -70,7 +151,7 @@ body {
 .rental-section .container {
     max-width: 1200px;
     margin: 0 auto;
-    color: #333;
+    color: #333333;
 }
 
 .rental-section h2 {
@@ -128,41 +209,59 @@ body {
 .directions-section .container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* 카드 사이의 간격 */
-    align-items: flex-start; /* 세로 정렬 */
+    text-align: center; /* 가운데 정렬 */
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.directions-container {
+    display: flex; /* 플렉스박스 사용 */
+    justify-content: space-between; /* 가로 방향으로 정렬 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+    gap: 20px; /* 요소 간의 간격 조정 */
+    flex-wrap: wrap; /* 여러 줄로 배치 가능하게 함 */
 }
 
 .map-container {
-    flex: 1; /* 가변 너비 */
-    min-width: 300px; /* 최소 너비 설정 */
+    flex: 1; /* 지도 컨테이너가 더 넓어지도록 설정 */
+    max-width: 100%;
 }
 
 .info-container {
-    flex: 1; /* 가변 너비 */
-    min-width: 300px; /* 최소 너비 설정 */
+    flex: 1; /* 정보 컨테이너가 좁아지도록 설정 */
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+    height: 400px; /* 지도와 같은 높이 설정 */
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: center; /* 가로 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    box-sizing: border-box; /* 패딩을 포함한 전체 크기 계산 */
+    flex-direction: column; /* 수직 방향으로 배치 */
 }
 
-.info-container h2 {
+.info-container h3 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
 }
 
 .info-container p {
-    margin-bottom: 10px;
+    margin: 5px 0; /* 상하 여백 설정 */
     font-size: 16px;
     color: #666;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
-    .directions-section .container {
-        flex-direction: column;
+    .directions-container {
+        flex-direction: column; /* 세로 방향으로 배치 */
     }
 
     .map-container,
@@ -203,7 +302,7 @@ footer {
     text-decoration: underline;
 }
 
-/* 갤러리 */
+/* 렌탈 - 제품 목록 갤러리 */
 .gallery-container {
     padding: 20px;
     background-color: #f4f4f4;
@@ -217,39 +316,50 @@ footer {
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
+    gap: 20px; /* 갤러리 아이템 간의 간격 조정 */
 }
 
 .gallery-item {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    text-align: center;
+    flex-basis: calc(33.333% - 20px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    background-color: #fff; /* 배경색 추가 */
+    padding: 10px; /* 내부 여백 추가 */
 }
 
 .gallery-item img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
+    margin-bottom: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
 }
 
-.gallery-item-info {
-    padding: 15px;
+.gallery-item h3 {
+    font-size: 20px;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    margin-bottom: 10px; /* 제목과 설명 사이의 간격 조정 */
 }
 
-.gallery-item-info h2 {
-    margin: 0;
-    font-size: 1.5em;
+.gallery-item p {
+    font-size: 16px;
+    color: #666;
+    text-align: center; /* 설명 텍스트를 가운데 정렬 */
 }
 
-.gallery-item-info p {
-    margin: 10px 0;
+.gallery-item:hover {
+    transform: translateY(-5px); /* 호버 시 살짝 올라가는 효과 */
 }
 
-.price {
-    font-weight: bold;
-    color: #007BFF;
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .gallery-item {
+        flex-basis: calc(50% - 20px); /* 작은 화면에서는 2열로 배치 */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        flex-basis: 100%; /* 더 작은 화면에서는 1열로 배치 */
+    }
 }
