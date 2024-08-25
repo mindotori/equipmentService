@@ -15,18 +15,25 @@
 <body>
 <div th:replace="fragments/header :: header"></div>
 
+<div class="container">
+    <!-- 큰 제목 -->
+    <h1>오시는 길</h1>
+
+    <!-- 지도를 표시할 영역 -->
+    <div id="map"></div>
+</div>
+
 <!-- 지도를 표시할 영역 -->
 <div id="map"></div>
 
 <script>
-    // 카카오 지도 API가 로드된 후에 이 코드를 실행합니다
     document.addEventListener("DOMContentLoaded", function() {
         // 지도를 표시할 div와 지도 옵션을 설정합니다
-        var mapContainer = document.getElementById('map'),
-            mapOption = {
-                center: new kakao.maps.LatLng(37.5882, 126.7207), // 사업장 중심
-                level: 3 // 지도의 확대 레벨
-            };
+        var mapContainer = document.getElementById('map');
+        var mapOption = {
+            center: new kakao.maps.LatLng(37.5882, 126.7207), // 사업장 고정
+            level: 3 // 지도의 확대 레벨
+        };
 
         // 지도를 생성합니다
         var map = new kakao.maps.Map(mapContainer, mapOption);
@@ -34,6 +41,25 @@
         // 지도 이동 및 확대/축소 기능을 비활성화하여 고정합니다
         map.setDraggable(false); // 지도 이동 불가
         map.setZoomable(false); // 지도 확대/축소 불가
+
+        // 마커를 생성합니다
+        var markerPosition  = new kakao.maps.LatLng(37.5882, 126.7207);
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커를 지도에 표시합니다
+        marker.setMap(map);
+
+        // 마커에 인포윈도우를 추가할 수도 있습니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="padding:5px;">여기입니다!</div>' // 인포윈도우의 내용
+        });
+
+        // 마커에 클릭 이벤트를 추가하여 인포윈도우를 표시합니다
+        kakao.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
     });
 </script>
 

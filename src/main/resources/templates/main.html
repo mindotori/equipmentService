@@ -3,15 +3,55 @@
 <head>
     <title>Main Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 
-<h1>Welcome to the Main </h1>
+<h1>Welcome to the Main</h1>
 
+<!-- 임대상품 바로가기 -->
+<section id="mainRental" class="rental-section">
+    <div class="container">
+        <h2>임대상품</h2>
+        <h2>판촉, 전시, 행사용 냉장/냉동고 임대</h2>
+        <div class="products">
+            <div class="product-item">
+                <a th:href="@{/rental}">
+                    <img src="/images/ham.png" alt="Product 1">
+                    <h3>Product 1</h3>
+                </a>
+            </div>
+            <div class="product-item">
+                <a th:href="@{/rental}">
+                    <img src="/images/ham.png" alt="Product 2">
+                    <h3>Product 2</h3>
+                </a>
+            </div>
+            <div class="product-item">
+                <a th:href="@{/rental}">
+                    <img src="/images/ham.png" alt="Product 3">
+                    <h3>Product 3</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-
+<!-- 오시는 길 섹션 -->
+<section id="directions" class="directions-section">
+    <div class="container">
+        <div class="map-container">
+            <!-- 카카오 맵 iframe 예제 -->
+            <iframe src="https://map.kakao.com/?api=1&map_type=TYPE_MAP&query=37.5882,126.7207" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <div class="info-container">
+            <h1>Company Information</h1>
+            <h3>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</h3>
+            <h3>Call: 010-4604-8127</h3>
+            <h3>Mail: micael1103@daum.net</h3>
+        </div>
+    </div>
+</section>
 
 <!--푸터-->
 <div th:replace="fragments/footer :: footer"></div>

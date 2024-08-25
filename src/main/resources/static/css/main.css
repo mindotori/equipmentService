@@ -1,7 +1,14 @@
+/* 브라우저 기본 스타일 초기화 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 /* 헤더 */
 .nav-bar {
     background-color: #f8f9fa;
-    padding: 10px 0;
+    padding: 20px 0; /* 상하 padding을 늘려서 높이 증가 */
     transition: background-color 0.5s; /* 배경색에만 전환 효과 적용 */
 }
 
@@ -31,6 +38,7 @@
 .nav-bar ul li a:hover {
     background-color: #007BFF;
     color: #fff;
+    opacity: 50%;
 }
 
 /* 전체 페이지를 flexbox로 설정 */
@@ -47,6 +55,120 @@ body {
 /* 콘텐츠가 페이지의 나머지 부분을 차지하도록 설정 */
 .content {
     flex: 1;
+}
+
+/* 임대상품 섹션 스타일 */
+.rental-section {
+    padding: 40px 0;
+    background-color: #f4f4f4;
+    display: flex; /* 플렉스박스 사용 */
+    flex-direction: column; /* 세로 방향으로 배치 */
+    align-items: center; /* 가로 방향 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+.rental-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.rental-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* 제품 컨테이너 */
+.products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* 여러 줄로 배치 가능하게 함 */
+    margin: 0 auto;
+    max-width: 1200px; /* 컨테이너 최대 너비 설정 */
+    gap: 20px; /* 제품 간의 간격 조정 */
+}
+
+/* 제품 아이템 */
+.product-item {
+    flex: 1 1 calc(33.333% - 20px); /* 3개의 제품이 일렬로 배치되도록 폭 설정 */
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    margin-bottom: 20px; /* 제품 아이템 간의 세로 간격 조정 */
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 오시는 길 섹션 */
+.directions-section {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+}
+
+.directions-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 카드 사이의 간격 */
+    align-items: flex-start; /* 세로 정렬 */
+}
+
+.map-container {
+    flex: 1; /* 가변 너비 */
+    min-width: 300px; /* 최소 너비 설정 */
+}
+
+.info-container {
+    flex: 1; /* 가변 너비 */
+    min-width: 300px; /* 최소 너비 설정 */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.info-container p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .directions-section .container {
+        flex-direction: column;
+    }
+
+    .map-container,
+    .info-container {
+        min-width: auto; /* 최소 너비 해제 */
+    }
 }
 
 /* 푸터 */
@@ -130,12 +252,4 @@ footer {
 .price {
     font-weight: bold;
     color: #007BFF;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .gallery {
-        flex-direction: column;
-        align-items: center;
-    }
 }
