@@ -4,13 +4,48 @@
     margin: 0;
     padding: 0;
 }
+/* Gmarket Sans 폰트 설정 */
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/fonts/GmarketSansTTFBold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/fonts/GmarketSansTTFMedium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSans';
+    src: url('/fonts/GmarketSansTTFLight.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+/* 폰트 적용 예시 */
+body {
+    font-family: 'GmarketSans', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: bold;
+}
+
+p {
+    font-family: 'GmarketSans', sans-serif;
+    font-weight: normal;
+}
 
 /* 카카오 맵 */
 #map {
     width: 100%;
     height: 400px; /* 원하는 높이로 설정 */
 }
-
 
 /* -------------헤더-------------- */
 header {
@@ -65,9 +100,9 @@ header {
 
 /* 링크 호버 스타일 */
 .nav-bar ul li a:hover {
-    background-color: #007BFF; /* 전체 배경색 변경 */
-    color: #fff; /* 텍스트 색상 변경 */
-    opacity: 100%; /* 불투명도 설정 */
+    /*background-color: #007BFF; !* 전체 배경색 변경 *!*/
+    color: #007BFF; /* 텍스트 색상 변경 */
+    /*opacity: 100%; !* 불투명도 설정 *!*/
 }
 
 /* 로고 이미지 스타일 */
@@ -80,7 +115,6 @@ header {
 .nav-bar ul li img:hover {
     background-color: transparent; /* 호버 시 배경색 변경 없음 */
 }
-
 
 /* 전체 페이지를 flexbox로 설정 */
 html, body {
@@ -99,40 +133,40 @@ body {
     flex: 1;
 }
 
-/* 나머지 스타일은 그대로 유지 */
+/*-----메인-------*/
 /* ---------------메인 슬라이더---------------------- */
+/* 슬라이더 섹션 */
 .slider-section {
     width: 100%;
     position: relative;
-    overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 50px; /* 아래 여백 조정 */
 }
 
 .slider-container {
     position: relative;
     max-width: 100%;
     margin: auto;
-    height: 600px; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
+    height: 600px; /* 슬라이더 높이 설정 */
 }
 
 .slider {
     display: flex;
-    position: relative;
-    width: 300%;
-    height: 100%; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
+    transition: transform 0.5s ease-in-out; /* 슬라이드 전환 애니메이션 */
+    width: 100%; /* 슬라이더의 너비를 100%로 설정 */
+    height: 100%; /* 슬라이더 높이에 맞게 설정 */
 }
 
 .slide {
     width: 100%;
     flex-shrink: 0;
+    height: 100%; /* 슬라이더 높이에 맞게 설정 */
     position: relative;
-    height: 100%; /* 슬라이더 높이를 증가시켜서 제대로 보이도록 조정 */
 }
 
 .slide img {
     width: 100%;
-    height: 100%; /* 이미지가 슬라이더 높이에 맞게 조정되도록 합니다 */
-    object-fit: cover; /* 이미지가 잘리지 않도록 조정 */
+    height: 100%;
+    object-fit: cover; /* 이미지를 컨테이너에 맞게 조정 */
     vertical-align: middle;
 }
 
@@ -141,11 +175,11 @@ body {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: #fff;
-    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8); /* 글씨 색상 및 투명도 설정 */
+    font-size: 40px;
     font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.4); /* 반투명 배경 설정 */
     border-radius: 5px;
 }
 
@@ -159,8 +193,7 @@ body {
     margin-top: -22px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
+    font-size: 25px;
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
@@ -175,6 +208,11 @@ body {
 }
 
 /* 메인 - 임대상품 섹션 스타일 */
+#mainRental .rentalH1 {
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
 .rental-section {
     padding: 100px 0;  /* 슬라이더와의 간격을 늘리기 위해 상단 패딩 증가 */
     background-color: #f4f4f4;
@@ -191,6 +229,7 @@ body {
 }
 
 .rental-section h2 {
+    margin-top: 20px;
     font-size: 28px;
     margin-bottom: 20px;
 }
@@ -339,52 +378,190 @@ footer {
 }
 
 /* 렌탈 - 제품 목록 갤러리 */
-.gallery-container {
+/* 왼쪽 사이드 및 제품 갤러리 섹션 */
+.contact-gallery-section {
+    display: flex;
+    gap: 20px; /* 사이드와 갤러리 간의 간격 조정 */
     padding: 20px;
     background-color: #f4f4f4;
 }
 
-.gallery-container h1 {
+/* 연락처 정보 스타일 */
+.contact-info {
+    flex: 1 1 30%; /* 기본 너비 설정 */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-info h2 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+}
+
+.contact-info a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* 제품 갤러리 컨테이너 스타일 */
+.gallery-container {
+    flex: 1 1 70%; /* 기본 너비 설정 */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.gallery-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* 갤러리 스타일 */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.333% - 20px); /* 3개의 제품이 한 줄에 배치되도록 설정 */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item-info {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.gallery-item-info h2 {
+    margin: 0;
+}
+
+
+/*----------제품 상세 페이지-------------*/
+/* 제품 상세 페이지 컨테이너 */
+.product-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* 제품 이미지 */
+.product-image {
+    max-width: 100%;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px; /* 갤러리 아이템 간의 간격 조정 */
-}
-
-.gallery-item {
-    flex-basis: calc(33.333% - 20px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-    background-color: #fff; /* 배경색 추가 */
-    padding: 10px; /* 내부 여백 추가 */
-}
-
-.gallery-item img {
-    max-width: 100%;
+.product-image img {
+    max-width: 600px; /* 이미지 최대 너비 설정 */
     height: auto;
-    display: block;
-    margin-bottom: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+    border-radius: 8px; /* 이미지 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
 
-.gallery-item h3 {
+/* 제품 정보 */
+.product-info {
+    max-width: 800px; /* 최대 너비 설정 */
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    text-align: center; /* 가운데 정렬 */
+}
+
+.product-info h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.product-description {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* 제품 사양 */
+.product-specs {
+    margin-bottom: 20px;
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+.product-specs h2 {
     font-size: 20px;
-    text-align: center; /* 텍스트를 가운데 정렬 */
-    margin-bottom: 10px; /* 제목과 설명 사이의 간격 조정 */
+    margin-bottom: 10px;
+    color: #333;
 }
 
-.gallery-item p {
+.product-specs ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.product-specs li {
+    margin-bottom: 8px;
     font-size: 16px;
     color: #666;
-    text-align: center; /* 설명 텍스트를 가운데 정렬 */
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px); /* 호버 시 살짝 올라가는 효과 */
+/* 제품 가격 */
+.product-price {
+    margin-top: 20px;
+}
+
+.product-price h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-price p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007BFF; /* 강조 색상 */
 }
 
 /* 반응형 디자인 */

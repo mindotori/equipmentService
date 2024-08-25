@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main Page</title>
+    <title>Product Details</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 
+<main class="product-details-container">
+    <div class="product-image">
+        <img src="/images/small.png" alt="Product Image">
+    </div>
+    <div class="product-info">
+        <h1>EAL-1000</h1>
+        <div class="product-specs">
+            <h2>Specifications</h2>
+            <ul>
+                <li>
+                    <h3>장비 기능</h3>
+                    <p>*냉장: -2 ~ +10</p>
+                    <p>*냉동: -20 ~ 18</p>
+                </li>
+                <li>
+                    <h3>장비 브랜드</h3>
+                    <p>arnee</p>
+                </li>
+                <li>
+                    <h3>장비 규격</h3>
+                    <p>1970 * 1000 * 900 (230KG/EA)</p>
+                </li>
+            </ul>
+        </div>
+        <div class="product-price">
+            <h2>Price</h2>
+            <p>$100.00</p>
+        </div>
+    </div>
+</main>
 
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

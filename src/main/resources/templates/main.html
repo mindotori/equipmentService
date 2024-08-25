@@ -15,45 +15,44 @@
         <div class="slider">
             <div class="slide">
                 <img src="/images/slide1.jpeg" alt="Slide 1">
-                <div class="caption">High Quality Freezers for Rent</div>
+<!--                <div class="caption">High Quality Freezers for Rent</div>-->
             </div>
             <div class="slide">
                 <img src="/images/slide2.jpeg" alt="Slide 2">
-                <div class="caption">Keep Your Products Fresh</div>
+<!--                <div class="caption">Keep Your Products Fresh</div>-->
             </div>
             <div class="slide">
                 <img src="/images/slide3.jpeg" alt="Slide 3">
-                <div class="caption">Reliable and Affordable</div>
+<!--                <div class="caption">Reliable and Affordable</div>-->
             </div>
         </div>
-        <!-- 슬라이더 네비게이션 -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 </section>
 
+
 <!-- 임대상품 바로가기 -->
 <section id="mainRental" class="rental-section">
     <div class="container">
-        <h1>Rental Equipment</h1>
-        <h3>판촉, 전시, 행사용 냉장/냉동고 임대</h3>
+        <h1 class="rentalH1">Rental Equipment</h1>
         <div class="products">
             <div class="product-item">
                 <a th:href="@{/rental}">
                     <img src="/images/small.png" alt="Product 1">
-                    <h3>Small Size</h3>
+                    <h3>EAL-1000</h3>
                 </a>
             </div>
             <div class="product-item">
                 <a th:href="@{/rental}">
                     <img src="/images/mid.png" alt="Product 2">
-                    <h3>Mid Size</h3>
+                    <h3>EAL-1370</h3>
                 </a>
             </div>
             <div class="product-item">
                 <a th:href="@{/rental}">
                     <img src="/images/big.png" alt="Product 3">
-                    <h3>Big Size</h3>
+                    <h3>EAL-2000</h3>
                 </a>
             </div>
         </div>
@@ -103,34 +102,36 @@
     map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    // 슬라이더 관련 스크립트
-    let slideIndex = 0;
-    showSlides();
+        // 슬라이더 관련 스크립트
+        let slideIndex = 0;
+        showSlides();
 
-    function showSlides() {
+        function showSlides() {
         let slides = document.getElementsByClassName("slide");
         for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
+        slides[i].style.display = "none";  /* 모든 슬라이드를 숨김 */
+    }
         slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
-        slides[slideIndex - 1].style.display = "block";
+        if (slideIndex > slides.length) { slideIndex = 1 }  /* 슬라이드 인덱스 조정 */
+        slides[slideIndex - 1].style.display = "block";  /* 현재 슬라이드만 보이도록 설정 */
     }
 
-    function plusSlides(n) {
+        function plusSlides(n) {
         slideIndex += n;
         if (slideIndex < 1) {
-            slideIndex = document.getElementsByClassName("slide").length;
-        } else if (slideIndex > document.getElementsByClassName("slide").length) {
-            slideIndex = 1;
-        }
+        slideIndex = document.getElementsByClassName("slide").length;
+    } else if (slideIndex > document.getElementsByClassName("slide").length) {
+        slideIndex = 1;
+    }
         showSlides();
     }
 
-    // 4초마다 슬라이드 자동 전환
-    setInterval(function() {
+        // 4초마다 슬라이드 자동 전환
+        setInterval(function() {
         plusSlides(1);
-    }, 4000);
+    }, 6000); /* 슬라이드 전환 시간 (밀리초 단위) */
+
+
 </script>
 </body>
 </html>

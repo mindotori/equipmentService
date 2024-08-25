@@ -7,41 +7,57 @@
 <body>
 <header th:replace="fragments/header :: header"></header>
 
-<main class="gallery-container">
-    <h1>Equipments</h1>
-    <div class="gallery">
-        <div class="gallery-item">
-            <a th:href="@{/rentalDetails1}">
-                <img src="/images/small.png" alt="Product 1">
-                <div class="gallery-item-info">
-                    <h2>Small Size</h2>
-                    <p>제품 1 설명</p>
-                    <p class="price">99만 베리</p>
-                </div>
-            </a>
+<main class="main-content">
+    <!-- 슬라이드 섹션 -->
+    <section class="slider-section">
+        <div class="slider-container">
+            <div class="slide">
+                <img src="/images/slide1.jpeg" alt="Slide Image">
+            </div>
         </div>
-        <div class="gallery-item">
-            <a th:href="@{/rentalDetails2}">
-                <img src="/images/mid.png" alt="Product 2">
-                <div class="gallery-item-info">
-                    <h2>Mid Size</h2>
-                    <p>제품 2 설명</p>
-                    <p class="price">10만 베리</p>
+    </section>
+
+    <!-- 왼쪽 사이드 및 제품 갤러리 -->
+    <section class="contact-gallery-section">
+        <!-- 연락처 정보 -->
+        <aside class="contact-info">
+            <h2>Contact Us</h2>
+            <p>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
+            <p>Call: 010-4604-8127</p>
+            <p>Mail: <a href="mailto:micael1103@daum.net">micael1103@daum.net</a></p>
+        </aside>
+
+        <!-- 제품 갤러리 -->
+        <div class="gallery-container">
+            <h2>Product Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails1}" class="gallery-item-link">
+                        <img src="/images/small.png" alt="Product 1">
+                        <div class="gallery-item-info">
+                            <h2>EAL-1000</h2>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="gallery-item">
-            <a th:href="@{/rentalDetails3}">
-                <img src="/images/big.png" alt="Product 3">
-                <div class="gallery-item-info">
-                    <h2>Big Size</h2>
-                    <p>제품 3 설명</p>
-                    <p class="price">20만 베리</p>
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails2}" class="gallery-item-link">
+                        <img src="/images/mid.png" alt="Product 2">
+                        <div class="gallery-item-info">
+                            <h2>EAL-1370</h2>
+                        </div>
+                    </a>
                 </div>
-            </a>
+                <div class="gallery-item">
+                    <a th:href="@{/rentalDetails3}" class="gallery-item-link">
+                        <img src="/images/big.png" alt="Product 3">
+                        <div class="gallery-item-info">
+                            <h2>EAL-2000</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <!-- Add more gallery items here -->
-    </div>
+    </section>
 </main>
 
 <footer th:replace="fragments/footer :: footer"></footer>
