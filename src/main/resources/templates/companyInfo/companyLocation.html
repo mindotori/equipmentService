@@ -5,12 +5,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <!-- 카카오 지도 API 불러오기 -->
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
-    <style>
-        #map {
-            width: 100%;  /* 지도의 너비 */
-            height: 400px;  /* 지도의 높이 */
-        }
-    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
@@ -21,10 +15,15 @@
 
     <!-- 지도를 표시할 영역 -->
     <div id="map"></div>
-</div>
 
-<!-- 지도를 표시할 영역 -->
-<div id="map"></div>
+    <!-- 연락처 정보 섹션 -->
+    <section class="contact-info">
+        <h2>Contact</h2>
+        <p>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
+        <p>Call: 010-4604-8127</p>
+        <p>Mail: <a href="mailto:micael1103@daum.net">micael1103@daum.net</a></p>
+    </section>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -62,6 +61,6 @@
         });
     });
 </script>
-
+<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

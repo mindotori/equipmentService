@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main Page</title>
+    <title>Dynamic Sidebar Example</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 포함 -->
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
+<section class="background">
+        <div class="slide ice">
+            <img src="/images/iceice.jpg" alt="Slide Image">
+        </div>
+</section>
+<div class="container">
+    <!-- 사이드바 -->
+    <aside class="sidebar">
+        <ul>
+            <li><a href="#" onclick="loadContent('companyWelcome.html')">인사말</a></li>
+            <li><a href="#" onclick="loadContent('companyLocation.html')">오시는 길</a></li>
+        </ul>
+    </aside>
 
-<h1>Welcome to the Main Page</h1>
+    <!-- 메인 컨텐츠 -->
+    <main class="content-area" id="main-content">
+        <!-- 기본적으로 로드될 내용은 'content1.html' -->
+        <div id="content-placeholder">Loading...</div>
+    </main>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script>
+    function loadContent(contentUrl) {
+        // AJAX 요청으로 콘텐츠 로드
+        $('#main-content').load(contentUrl);
+    }
+
+    // 페이지 로드 시 기본 콘텐츠 로드
+    $(document).ready(function() {
+        loadContent('content1.html');
+    });
+</script>
 </body>
 </html>
