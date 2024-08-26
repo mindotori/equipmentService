@@ -1,29 +1,21 @@
+<!-- companyLocation.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Main Page</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <!-- 카카오 지도 API 불러오기 -->
-    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
 </head>
 <body>
-<div th:replace="fragments/header :: header"></div>
+<!-- 지도를 표시할 영역 -->
+<div id="map"></div>
 
-<div class="container">
-    <!-- 큰 제목 -->
-    <h1>오시는 길</h1>
-
-    <!-- 지도를 표시할 영역 -->
-    <div id="map"></div>
-
-    <!-- 연락처 정보 섹션 -->
-    <section class="contact-info">
-        <h2>Contact</h2>
-        <p>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
-        <p>Call: 010-4604-8127</p>
-        <p>Mail: <a href="mailto:micael1103@daum.net">micael1103@daum.net</a></p>
-    </section>
-</div>
+<!-- 연락처 정보 섹션 -->
+<section class="contact-info">
+    <h2>Contact</h2>
+    <p>Location: 인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
+    <p>Call: 010-4604-8127</p>
+    <p>Mail: micael1103@daum.net</p>
+</section>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -61,6 +53,5 @@
         });
     });
 </script>
-<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <head>
     <title>Dynamic Sidebar Example</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 포함 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 <section class="background">
-        <div class="slide ice">
-            <img src="/images/iceice.jpg" alt="Slide Image">
-        </div>
+    <div class="slide ice">
+        <img src="/images/iceice.jpg" alt="Slide Image">
+    </div>
 </section>
 <div class="container">
     <!-- 사이드바 -->
@@ -23,7 +23,7 @@
 
     <!-- 메인 컨텐츠 -->
     <main class="content-area" id="main-content">
-        <!-- 기본적으로 로드될 내용은 'content1.html' -->
+        <!-- 기본적으로 로드될 내용은 'companyWelcome.html' -->
         <div id="content-placeholder">Loading...</div>
     </main>
 </div>
@@ -33,12 +33,16 @@
 <script>
     function loadContent(contentUrl) {
         // AJAX 요청으로 콘텐츠 로드
-        $('#main-content').load(contentUrl);
+        $('#main-content').load(contentUrl, function(response, status, xhr) {
+            if (status == "error") {
+                $('#main-content').html("Error loading content: " + xhr.status + " " + xhr.statusText);
+            }
+        });
     }
 
     // 페이지 로드 시 기본 콘텐츠 로드
     $(document).ready(function() {
-        loadContent('content1.html');
+        loadContent('companyWelcome.html'); // 기본 콘텐츠 로드
     });
 </script>
 </body>
