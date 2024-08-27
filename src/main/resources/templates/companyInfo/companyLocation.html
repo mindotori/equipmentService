@@ -1,9 +1,7 @@
-<!-- companyLocation.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- 카카오 지도 API 불러오기 -->
-    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
+    <!-- 여기에 추가적인 스타일이나 메타 데이터를 넣을 수 있지만, 카카오 지도 API를 추가하지 않습니다. -->
 </head>
 <body>
 <!-- 지도를 표시할 영역 -->
@@ -16,42 +14,5 @@
     <p>Call: 010-4604-8127</p>
     <p>Mail: micael1103@daum.net</p>
 </section>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // 지도를 표시할 div와 지도 옵션을 설정합니다
-        var mapContainer = document.getElementById('map');
-        var mapOption = {
-            center: new kakao.maps.LatLng(37.5882, 126.7207), // 사업장 고정
-            level: 3 // 지도의 확대 레벨
-        };
-
-        // 지도를 생성합니다
-        var map = new kakao.maps.Map(mapContainer, mapOption);
-
-        // 지도 이동 및 확대/축소 기능을 비활성화하여 고정합니다
-        map.setDraggable(false); // 지도 이동 불가
-        map.setZoomable(false); // 지도 확대/축소 불가
-
-        // 마커를 생성합니다
-        var markerPosition  = new kakao.maps.LatLng(37.5882, 126.7207);
-        var marker = new kakao.maps.Marker({
-            position: markerPosition
-        });
-
-        // 마커를 지도에 표시합니다
-        marker.setMap(map);
-
-        // 마커에 인포윈도우를 추가할 수도 있습니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="padding:5px;">여기입니다!</div>' // 인포윈도우의 내용
-        });
-
-        // 마커에 클릭 이벤트를 추가하여 인포윈도우를 표시합니다
-        kakao.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-        });
-    });
-</script>
 </body>
 </html>

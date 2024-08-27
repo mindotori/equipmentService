@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
 }
+
 .page-container{
     display: flex;
     flex-direction: column;
@@ -270,11 +271,32 @@ body {
 }
 
 /* 메인 - 임대상품 섹션 스타일 */
-#mainRental .rentalH1 {
+.rentalH1 {
     margin-bottom: 25px;
     font-size: 32px;
     text-align: center;
+    position: relative;
+    display: inline-block; /* 내용만큼 크기를 조정합니다 */
+    padding: 20px;
+    color: #333;
+    z-index: 1; /* 배경 이미지 뒤에 글자가 오도록 설정 */
 }
+
+.rentalH1::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%; /* 배경 이미지 크기 조정 */
+    height: 150%; /* 배경 이미지 크기 조정 */
+    background-image: url('../images/circle.png');
+    background-size: cover; /* 배경 이미지가 요소를 완전히 덮도록 설정 */
+    background-repeat: no-repeat;
+    opacity: 0.2; /* 투명도 설정 */
+    transform: translate(-50%, -50%); /* 가운데 정렬 */
+    z-index: -1; /* 배경 이미지가 글자 뒤로 가도록 설정 */
+}
+
 
 .rental-section {
     padding: 100px 0;  /* 슬라이더와의 간격을 늘리기 위해 상단 패딩 증가 */
@@ -350,11 +372,11 @@ body {
     text-align: center; /* 가운데 정렬 */
 }
 
-.section-title {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #333;
-}
+/*.section-title {*/
+/*    font-size: 32px;*/
+/*    margin-bottom: 20px;*/
+/*    color: #333;*/
+/*}*/
 
 .directions-container {
     display: flex; /* 플렉스박스 사용 */

@@ -4,6 +4,8 @@
     <title>Dynamic Sidebar Example</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 카카오 지도 API 불러오기 -->
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
@@ -31,11 +33,16 @@
 <footer th:replace="fragments/footer :: footer"></footer>
 
 <script>
+    // 기존 loadContent 함수에 추가 작업
     function loadContent(contentUrl) {
-        // AJAX 요청으로 콘텐츠 로드
         $('#main-content').load(contentUrl, function(response, status, xhr) {
             if (status == "error") {
                 $('#main-content').html("Error loading content: " + xhr.status + " " + xhr.statusText);
+            } else {
+                // 'companyLocation.html'이 로드된 경우, initMap 함수를 호출합니다.
+                if (contentUrl === 'companyLocation.html') {
+                    initMap();  // 카카오 지도 초기화 함수 호출
+                }
             }
         });
     }
@@ -44,6 +51,29 @@
     $(document).ready(function() {
         loadContent('companyWelcome.html'); // 기본 콘텐츠 로드
     });
+
+    // 카카오 지도 초기화 함수
+    function initMap() {
+        var mapContainer = document.getElementById('map');
+        var mapOption = {
+            center: new kakao.maps.LatLng(37.5882, 126.7207),
+            level: 3
+        };
+        var map = new kakao.maps.Map(mapContainer, mapOption);
+        map.setDraggable(false);
+        map.setZoomable(false);
+        var markerPosition = new kakao.maps.LatLng(37.5882, 126.7207);
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+        marker.setMap(map);
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="padding:5px;">인천광역시 계양구 갈미길 32 (갈현동 7-3)</div>'
+        });
+        kakao.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+    }
 </script>
 </body>
 </html>
