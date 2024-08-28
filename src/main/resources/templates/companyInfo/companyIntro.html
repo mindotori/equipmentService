@@ -6,6 +6,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- 카카오 지도 API 불러오기 -->
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=7eb24304ae4adeb2c8696d63e5e6bc46"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gmarket+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
@@ -67,11 +68,30 @@
             position: markerPosition
         });
         marker.setMap(map);
+
+        // 인포윈도우 내용 정의 (닫기 버튼 포함)
+        var infowindowContent = `
+    <div class="custom-infowindow">
+        <p>인천광역시 계양구 갈미길 32 (갈현동 7-3)</p>
+        <button id="close-infowindow" style="margin-top: 5px; padding: 3px 7px; background-color: #3498db; border: none; color: white; cursor: pointer;">닫기</button>
+    </div>
+`;
+
+
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="padding:5px;">인천광역시 계양구 갈미길 32 (갈현동 7-3)</div>'
+            content: infowindowContent
         });
+
+        // 마커 클릭 시 인포윈도우 열기
         kakao.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map, marker);
+
+            // 닫기 버튼 클릭 이벤트
+            setTimeout(function() {
+                document.getElementById('close-infowindow').onclick = function() {
+                    infowindow.close();
+                };
+            }, 0);
         });
     }
 </script>
