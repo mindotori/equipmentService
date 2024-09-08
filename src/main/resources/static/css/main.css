@@ -720,7 +720,16 @@ footer {
 }
 
 
-/* 반응형 디자인 */
+/* ㅡㅡㅡㅡㅡㅡㅡㅡ반응형 디자인ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
+
+/* 네비게이션 아이템 숨기기 */
+@media (max-width: 768px) {
+    /* 창 크기가 768px 이하일 때 li와 a 숨김 */
+    .nav-bar ul li a {
+        display: none !important;
+    }
+}
+
 @media (max-width: 768px) {
     .gallery-item {
         flex-basis: calc(50% - 20px); /* 작은 화면에서는 2열로 배치 */
@@ -730,5 +739,16 @@ footer {
 @media (max-width: 480px) {
     .gallery-item {
         flex-basis: 100%; /* 더 작은 화면에서는 1열로 배치 */
+    }
+}
+
+@media (max-width: 480px) {
+    .rental-section .products {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rental-section .product-item {
+        margin-bottom: 20px;
     }
 }
