@@ -2,6 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Product Gallery</title>
+    <style>
+        /* 슬라이드 전용 스타일 (공통 CSS보다 우선 적용됨) */
+        .slider-section .slide img {
+            height: 300px;   /* 원하는 값 (예: 250px, 300px, 350px) */
+            object-fit: cover;
+        }
+
+        .slider-section {
+            max-height: 300px; /* 슬라이드 전체 영역 제한 */
+            overflow: hidden;
+        }
+    </style>
+
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 <body>
